@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Uber Project</title>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/vendors/gmaps.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/foodtrucks.js') }}"></script>
+  </head>
+
+  <body>
+    <br>
+    <div class="container">
+      <div class="span6 offset3">
+        <center><h1>Getting Hungry</h1><br>
+        <div id="map"></div></center>
+        <br>
+        <div class="hero-unit">
+          <h2>Find food trucks near you! </h2>
+          <form class="form-search">
+            <input type="text" id="input" name="address" placeholder="182 Howard St, San Francisco">
+            <button class="btn btn-primary" type="button" id="button">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
