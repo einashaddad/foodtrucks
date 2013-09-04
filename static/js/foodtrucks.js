@@ -1,5 +1,12 @@
 $(document).ready(function() {
 
+    $('#input').keydown(function(event){
+        if(event.keyCode == 13) {
+          event.preventDefault();
+          $("#button").click();
+        }
+    });
+
     $("#button").click(function(){
         address = $("input[name=address]").val();
         data = {location: address};
