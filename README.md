@@ -13,4 +13,4 @@ This app can be found @ http://foodtruckexplorer.herokuapp.com/
 
 Food truck data from [DataSF](http://www.datasf.org/): [Food Trucks](https://data.sfgov.org/Permitting/Mobile-Food-Facility-Permit/rqzj-sfat)
 
-Here's also a link to [Symptomatic](https://github.com/einashaddad/symptomatic) and my [LinkedIn](www.linkedin.com/pub/einas-haddad/28/132/787/)
+Here's also a link to [Symptomatic](https://github.com/einashaddad/symptomatic) and my [LinkedIn](http://www.linkedin.com/pub/einas-haddad/28/132/787/)
