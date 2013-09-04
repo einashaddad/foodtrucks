@@ -42,7 +42,7 @@ def geocode_location(address):
     except:
         return None
 
-def calculate_bounds(user_location, r=1):
+def calculate_bounds(user_location, r=0.5):
     """ Returns a dictionary of the northwestern & southeastern coordinates that bound the location by a specified radius
     """
     try:
@@ -90,4 +90,4 @@ def distance(loc1, loc2):
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
-    app.run(debug=True, host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0', port=port)

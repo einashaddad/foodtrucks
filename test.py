@@ -57,4 +57,3 @@ def test_distance():
     loc1 = (0, 3)
     loc2 = (4, 0)
     assert distance(loc1, loc2) == 5
-
