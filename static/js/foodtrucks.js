@@ -40,7 +40,7 @@ $(document).ready(function() {
             height: '500px',
             dragend: function(e){
                 center = this.getCenter();
-                data = {lat: center.ob, lng: center.pb};
+                data = {lat: center.pb, lng: center.qb};
                 getTrucks(data);
             }
         });
