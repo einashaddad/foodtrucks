@@ -16,6 +16,7 @@ $(document).ready(function() {
 
     google.maps.event.addDomListener(window, 'load', initialize);
 
+    // When enter is pressed, mimick a click
     $('#input').keydown(function(event){
         if(event.keyCode == 13) {
           event.preventDefault();
@@ -30,6 +31,8 @@ $(document).ready(function() {
     });
 
     var getTrucks = function(data) {
+        // Make an API call to the back-end to get all nearyby foodtrucks
+        // If successful, draw the map
         $.ajax({
             url: "/api/foodtrucks",
             type: 'GET',
@@ -45,12 +48,17 @@ $(document).ready(function() {
         });
     }
 
-    var drawMap = function(coordinates, foodTrucks){
+    var drawMap = function(coordinates, foodTrucks) {
+
+        var markersArray = [];
+
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(coordinates.lat, coordinates.lng),
             map: map,
             title: 'You are here'
         });
+
+        markersArray.push(marker);
         
         map.panTo(marker.getPosition());
         
@@ -63,7 +71,7 @@ $(document).ready(function() {
                 title: foodTrucks[i].applicant,
                 icon: 'static/images/foodtruck.png'
             });
-
+            markersArray.push(marker);
             marker.content =    '<a href='+foodTrucks[i].schedule+'>'+
                                 foodTrucks[i].applicant+'</a>' +
                                 '<p>'+ foodTrucks[i].fooditems +'</p>';
@@ -75,5 +83,24 @@ $(document).ready(function() {
                 infoWindow.open(this.getMap(), this);
             });
         };
+
+        // Adds a listener to the map on drag, 
+        // clears all markers and gets all the trucks in that area
+        google.maps.event.addListener(map, 'dragend', function() {
+            window.setTimeout(function() {
+                clearOverlays();
+                center = map.getCenter();
+                data = {lat: center.pb, lng: center.qb};
+                getTrucks(data);
+            }, 500);
+        });
+
+        // Iterates through the markersArray and sets all markers to null
+        function clearOverlays() {
+            for (var i = 0; i < markersArray.length; i++ ) {
+                markersArray[i].setMap(null);
+            }
+            markersArray = [];
+        }
     }
 });
